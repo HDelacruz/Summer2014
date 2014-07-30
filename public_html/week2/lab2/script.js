@@ -41,6 +41,37 @@
         }
         
         
+        
+        var comments = document.getElementById('comments');
+        var err_comments = document.getElementById('err_comments');
+        var hasErrors = false;
+    
+ 
+        
+        if ( !comments.value.length ) {
+           hasErrors = true;
+           err_comments.innerHTML = '<p>Email is not valid.</p>';
+           comments.classList.add('bad');
+           comments.classList.remove('good');
+            
+        } else {
+            err_comments.innerHTML = '';
+            comments.classList.add('good');
+            comments.classList.remove('bad');
+        }
+        
+        
+        
+    }
+    
+    
+    
+    // method
+    function testing( str ){
+        console.log(str);
+        
+        
+        
     }
     
    
