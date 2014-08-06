@@ -14,3 +14,65 @@ Requirements:
  */
 
 
+var ads = [];
+             
+                         
+ads.push({ 
+    "title": 'This was hard', 
+    "desc" : 'I think i learn something today!' 
+});
+ads.push({ 
+    "title": 'But still sucks', 
+    "desc" : 'I like this class' 
+});
+ads.push({ 
+    "title": 'I hope i get an A', 
+    "desc" : 'Will see what happens at the end of the Quarter' 
+});
+ads.push({ 
+    "title": 'no matter waht this still sucks', 
+    "desc" : 'Javascript is hard' 
+});
+
+ads.push({ 
+    "title": 'but im still trying to learn', 
+    "desc" : 'like i said before, it sucks' 
+});
+
+// using a function to return one of my random arrays
+function rand (max) {
+  return Math.floor (Math.random()*max);  
+}
+// created a variable to hold my random array aoject
+var adRandIndex = rand (ads.length);
+
+//createda avariable to hold the elemnt form the html fime  'ad'
+var divAd = document.getElementById('ad');
+
+
+divAd.innerHTML = ads [adRandIndex].desc;
+
+
+// another function to change the document tittle 
+function changeDocumentTitle( title )
+{
+  document.title = title;
+}
+//call the function to change ads to be the same as tittle
+ changeDocumentTitle([ads.title]);
+ 
+ document.title = ads[adRandIndex].title + '...';
+ 
+ 
+console.log(ads[adRandIndex].title);
+console.log(ads[adRandIndex].desc);
+
+
+
+
+
+
+
+
+
+

@@ -20,14 +20,19 @@ and open the template in the editor.
              * It's a object format that hold a key value pair.
              */
             
-            
+           
             var myjson = {};
+            
+            myjson.cars = ['mustang','honda','kia'];
+            
             
             myjson.hello = 'hey hows it going?';
             myjson.coolArr = [1,2,3];
             
             
-            console.log(myjson);
+            
+            console.log(myjson.cars[0]);
+            console.log(myjson['cars'][1]);
             
             
             var myjson2 = {
@@ -35,16 +40,30 @@ and open the template in the editor.
                 "coolArr" : [1,2,3]
             };
             
-             console.log(myjson2);
+             console.log(myjson2.hello);
+             console.log(myjson2.coolArr[2]);
              
-             
-             
+                         
              var myArr = [];
-             myArr.push( { "title": 'this is cool', "desc" : 'this is cool because I can use it' });
+             
+                         
+             myArr.push({ 
+                 "title": 'this is cool1', 
+                 "desc" : 'this is cool1 because I can use it' 
+             });
+             myArr.push({ 
+                 "title": 'this is cool2', 
+                 "desc" : 'this is cool2 because I can use it' 
+             });
+             
+            // console.log(myArr[1].desc);
+             
+             console.log(myArr[1].title);
+             console.log(myArr[1].desc);
+             
+            
              
              
-             console.log(myArr[0].title);
-             console.log(myArr[0].desc);
              
             </script>
     </body>
