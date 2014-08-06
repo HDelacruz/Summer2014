@@ -30,7 +30,7 @@ ads.push({
     "desc" : 'Will see what happens at the end of the Quarter' 
 });
 ads.push({ 
-    "title": 'no matter waht this still sucks', 
+    "title": 'no matter what this still sucks', 
     "desc" : 'Javascript is hard' 
 });
 
