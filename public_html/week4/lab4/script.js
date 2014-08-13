@@ -28,7 +28,13 @@ mouse cords into the array.
 
 var userdata = {
     "name": '',
-    "email": ''
+    "email": '',
+    "mouseX": [],
+    "mouseY": [],
+    "height": "",
+    "width": "",
+    "agent": "",
+    "tittle":""
  
 };
 
@@ -63,7 +69,32 @@ function saveEmail() {
 }
 
 
+function screensize (){
+    
+    userdata.height = window.innerHeight;
+    userdata.width = window. innerWidth;
+    userdata.agent = window. navigator. userAgent;
+    userdata.tittle = document.title;
+    
+    
+       
+}
+window.addEventListener ('load', screensize);
 
 
 
 
+
+
+function trackMouse(e) {
+                userdata.mouseX.push(e.clientX);
+                userdata.mouseY.push(e.clientY);
+                
+                
+                if ( userdata.mouseX.length > 100 ) {
+                    document.removeEventListener('mousemove', trackMouse);
+                }
+                
+            }
+            
+            document.addEventListener('mousemove', trackMouse);
