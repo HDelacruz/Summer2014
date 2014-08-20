@@ -12,10 +12,14 @@
     <form name="mainform" id="mainform" action="">
 	<div id="content">
 	<fieldset>
-		<legend>Personal information:</legend>		
+		<legend>Personal information:</legend>	
+                
+                <label for="fname">First Name:</label> 
+                <input id="name" name="fname" type="text" size="30" placeholder="First Name" /> 
+                <span class="error" id="err_name"></span> <br /><br />
 
-                <label for="name">Name:</label> 
-                <input id="name" name="name" type="text" size="30" placeholder="Full name" /> 
+                <label for="lname">Last Name:</label> 
+                <input id="name" name="lname" type="text" size="30" placeholder="Last name" /> 
                 <span class="error" id="err_name"></span> <br /><br />
 
                 <label for="email">E-mail:</label> 

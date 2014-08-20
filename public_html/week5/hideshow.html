@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width">
+        <style type="text/css">
+            div {
+                border: 1px solid black;
+            }
+        </style>
+            
+    </head>
+    <body>
+        
+        
+        <button id="hide">hide</button>
+        <button id="show">show</button>
+        <br />
+        <div id="content">TODO write content</div>
+        
+        <script type="text/javascript">
+        
+            var div = document.getElementById('content');
+            
+            function hide() {
+                div.style.display = 'none';
+            }
+            
+            function show() {
+                div.style.display = 'block';
+            }
+            
+            document.getElementById('hide').addEventListener('click', hide);
+            document.getElementById('show').addEventListener('click', show);
+    
+        </script>
+            
+        
+    </body>
+</html>
