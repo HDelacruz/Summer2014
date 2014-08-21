@@ -34,14 +34,14 @@ function submitForm() {
 
 //checking for first name
     
-    if(fname.value == "")
+    if(fname.value === "")
     {
         var msg="please enter first name";
         document.getElementById("err_fname").innerHTML=msg; 
     }
     else
     {
-       if ( noSpaceAlphaValidate( fname.value ) == true ) {
+       if ( noSpaceAlphaValidate( fname.value ) === true ) {
                 console.log("First name is good");
         } else {
                 console.log("First name only alpha characters");
@@ -51,14 +51,14 @@ function submitForm() {
    
    //Checking if last name 
     
-    if(lname.value == "")
+    if(lname.value === "")
     {
         var msg="please enter Last name";
         document.getElementById("err_lname").innerHTML=msg; 
     }
     else
     {
-        if (noSpaceAlphaValidate( fname.value )== false) {
+        if (noSpaceAlphaValidate( fname.value )=== false) {
             console.log("Last name needs Alpha chars");
         } else {
             console.log("Last name is good");
@@ -72,13 +72,13 @@ function submitForm() {
     //Checking email 
     
     
-    if(email.value == "")
+    if(email.value === "")
     {
         var msg="please enter email";
         document.getElementById("err_email").innerHTML=msg; 
         console.log("Email is not valid");
     }
-    else if (checkEmail(email.value) == false) 
+    else if (checkEmail(email.value) === false) 
     {
         var msg="please enter valid email";
         document.getElementById("err_email").innerHTML=msg; 
@@ -95,7 +95,7 @@ function submitForm() {
     
     comments.value = strip_HTML(comments.value);
     
-    if (comments.value == "" || comments.value.length > 150)
+    if (comments.value === "" || comments.value.length > 150)
     {
         var msg="please enter valid comments";
         document.getElementById("err_comments").innerHTML=msg;
