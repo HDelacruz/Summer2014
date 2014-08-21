@@ -1,144 +1,121 @@
-/*
- * Make sure to validate that an email is 
- * entered into the input(just that it has a length.
- * 
- * Validate the comments field to make sure that is has
- * a length greater than 0 and less than 150.
- */
-    
-  function submitForm()
-  {
-    
-    var fullname = document.getElementById("name");
-    var fullnameErr = document.getElementById("err_name");
-    
-    var hasErrors = false;
-    
-    if ( fullname.value.length )
-	{
-		fullname.classList.remove('bad');
-        fullname.classList.add('good');        
-        fullnameErr.innerHTML = '';      
-    }
-
-	else 
-	{
-        hasErrors = true;
-        fullname.classList.remove('good');
-        fullname.classList.add('bad');       
-        fullnameErr.innerHTML = "<p>Full Name is not valid.</p>";       
-    }
-    
-    /*i used what we learn in lass to add error message to the email
-     * created variable names email and err_email the equal the the name id use on my html form
-     * used the ! to speciafy if the email is not valid to put out a message saing email not valid
-     * used the classList to add bad or good from the style sheet
-     */
-   var email = document.getElementById('email');
-    var err_email = document.getElementById('err_email');
-    
-        
-        if ( !email.value.length ) 
-		{
-         hasErrors = true;
-         err_email.innerHTML = '<p>Email is not valid.</p>';
-         email.classList.add('bad');
-         email.classList.remove('good');            
-        } 
-		
-	else 
-	{
-         err_email.innerHTML = '';
-         email.classList.add('good');
-         email.classList.remove('bad');
-        }
-        
-        
-        /*here i created new variable for comments just like the email area
-         * i used the if statement if < 1 character is inputed and the 
-         * statement is true, put out please enter a comment
-         * i useed the else if, if more then 150 characters were 
-         * inputed and if the statement was true to put out comments has to be 
-         * less then 150 characters
-         * i used the else line right after if the statement came false meaning 
-         * there was a comment inputed and less then 150 character not to give 
-         * error message
-         * 
-         */
-        var comments = document.getElementById('comments');
-        var err_comments = document.getElementById('err_comments');
-        var hasErrors = false;
-		
-		
-  
-        if (comments.value.length < 1) 
-		{
-         hasErrors = true;
-           err_comments.innerHTML = "<p>Please input a comment</p>";
-        }
-		
-	    else if (comments.value.length > 150)
-		{
-		 hasErrors = true ;
-		 err_comments.innerHTML = "<p>Please input a comment not more then 150 characters.</p>"; 
-			
-		}
-		
-		else 
-		{
-		 hasErrors = false;           
-         err_comments.innerHTML = '';	
-       	}
-		
-		  
-    }
-    
-    
-    /*
- Let’s revisit form validation from week 2. 
-  You will use your same form but create some new JavaScript. 
- 
-1. In your HTML make a fname and lname fields.
-2. Using regular expression to validate your form.
-    a. Full name must be a SpaceAlphaValidate, only characters and spaces allowed
-    c. Email must start with characters, have a @ symbol, have another set 
-       of characters have a period and end with 3 characters.
-    d. Comments must not have any html.  Search for characters that have <> 
-       wrapped around it.
-
-3.  Once all the data is valid hide the form using [object].style.display='none'
-    Display a div that will show the data entered.  You can add a div to the page
-    and have it display:none to start.
-
+/* 
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
  */
 
-
-
-
-
-
-function SpaceAlphaValidate( str ) {
-        var alphaRegex = /[a-zA-Z ]+/;
-        return alphaRegex.test(str);	
-        
-        
+// this is used to check the email field
+function checkEmail ( str ) {
+      var myreg = /(^[a-zA-Z]+[@][a-zA-Z]+[.][a-zA-Z]{3}$)/;
+      return myreg.test(str);
 }
+
+
+function noSpaceAlphaValidate( str ) {
+        var alphaRegex = /(^[a-zA-Z]+$)/;
+        return alphaRegex.test(str);			
+}
+
 
 function strip_HTML(str) {
         var findHtml = /<(.|\n)*?>/gi;
         return str.replace(findHtml,"");
 }
 
-function submitform() {
-			
-        var fname = document.getElementById('fname');
 
-        if ( !fname.value.length ) {
-                console.log("Fname needs a length");
-        } else if ( SpaceAlphaValidate( fname.value ) === false ) {
-                console.log("Fname needs Alpha chars");
+function submitForm() {
+
+// this are my new variables using get element by id
+
+        var fname = document.getElementById('fname');
+        var lname = document.getElementById('lname');
+        var email = document.getElementById('email');
+        var comments = document.getElementById('comments');
+
+//checking for first name
+    
+    if(fname.value == "")
+    {
+        var msg="please enter first name";
+        document.getElementById("err_fname").innerHTML=msg; 
+    }
+    else
+    {
+       if ( noSpaceAlphaValidate( fname.value ) == true ) {
+                console.log("First name is good");
         } else {
-                console.log("Fname is good");
+                console.log("First name only alpha characters");
         }
+         document.getElementById("err_fname").innerHTML=""; 
+    }
+   
+   //Checking if last name 
+    
+    if(lname.value == "")
+    {
+        var msg="please enter Last name";
+        document.getElementById("err_lname").innerHTML=msg; 
+    }
+    else
+    {
+        if (noSpaceAlphaValidate( fname.value )== false) {
+            console.log("Last name needs Alpha chars");
+        } else {
+            console.log("Last name is good");
+        }
+        
+    document.getElementById("err_lname").innerHTML=""; 
+    }
+    
+    
+    
+    //Checking email 
+    
+    
+    if(email.value == "")
+    {
+        var msg="please enter email";
+        document.getElementById("err_email").innerHTML=msg; 
+        console.log("Email is not valid");
+    }
+    else if (checkEmail(email.value) == false) 
+    {
+        var msg="please enter valid email";
+        document.getElementById("err_email").innerHTML=msg; 
+    }
+    
+         
+    else
+    {
+        document.getElementById("err_email").innerHTML="";   
+    
+    }
+    
+    // remove the HTML elements
+    
+    comments.value = strip_HTML(comments.value);
+    
+    if (comments.value == "" || comments.value.length > 150)
+    {
+        var msg="please enter valid comments";
+        document.getElementById("err_comments").innerHTML=msg;
+    }
+    
+    else 
+    {
+ 
+ // error message if comments are valid
+ 
+        document.getElementById("err_comments").innerHTML="";
+        
+    }
+    
+    
+      
 
 }
+
+
+ //Event listener that will activate the Submit button once it is clicked 
+ 
+document.getElementById('submitbtn').addEventListener('click',submitForm);
