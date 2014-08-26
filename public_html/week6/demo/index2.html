@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title> Week 6 Demo </title>
+		<style>
+			.contentBox {
+				width: 300px;
+				margin: 1em;
+				margin-left: auto;
+				margin-right: auto;
+			}
+		</style>
+	</head>
+<body>
+
+	<div id="content" class="contentBox"></div>
+
+	<input type="button" id="showResults" value="Show Results" />
+
+	<script type="text/javascript">
+
+		 //http://canvas.site40.net/demopage.html	
+		// XML HTTP Request
+		var xhr = new XMLHttpRequest();//ajax request object
+		var content = document.getElementById('content');  
+		var showResults = document.getElementById('showResults');  
+		var url = "demo.php?page=";
+                var step = 1;
+		
+                showResults.addEventListener('click',makeAJAXCall);
+		
+		function callback() {
+			var response = xhr.responseText;  
+						
+			content.innerHTML += response;
+                        step++;
+                        
+
+		}
+		
+		
+		xhr.onreadystatechange = function() { //when i make a call this function will let me know whe is ready
+									
+		   if (xhr.readyState==4 && xhr.status==200) {  //200 means ok data actually came back
+			callback();  //programing technic ones something is complete do a callback
+		   } 
+		};  
+		
+		
+                function makeAJAXCall(){//once i make a call it calls onreadystatechange
+                    if ( step < 5 ) {   // if less then 5                  
+                        xhr.open('GET', url+step, true);  //make an open get request
+                        xhr.send();   
+                    }
+                }
+		
+		
+                
+		window.addEventListener('load', makeAJAXCall);//when window loads it makes a ajax request
+
+
+                function scrollCheck() {
+			if ( (window.innerHeight + window.scrollY) >= document.body.offsetHeight) {//this is th inner height of the window plus it add the possition of the scrool bar to where it is a you scroll down				
+				makeAJAXCall();
+			}
+		}
+		
+		window.addEventListener("scroll", scrollCheck);
+		
+		
+		
+		 
+
+		
+		
+	</script>
+</body>
+</html>
