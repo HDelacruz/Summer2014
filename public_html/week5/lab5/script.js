@@ -59,7 +59,7 @@ function submitForm() {
     else
     {
         if (noSpaceAlphaValidate( fname.value )=== false) {
-            console.log("Last name needs Alpha chars");
+            console.log("Last name needs Alpha characters");
         } else {
             console.log("Last name is good");
         }
@@ -91,7 +91,7 @@ function submitForm() {
     
     }
     
-    // remove the HTML elements
+  //remove html elements
     
     comments.value = strip_HTML(comments.value);
     

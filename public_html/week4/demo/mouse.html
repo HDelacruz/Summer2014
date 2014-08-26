@@ -18,7 +18,7 @@ and open the template in the editor.
         
         <script type="text/javascript">
             var email = document.getElementById('email');
-                email.addEventListener('blur', saveEmail);
+             email.addEventListener('blur', saveEmail);
             function saveEmail() {
                 data.email =  email.value;
             }
@@ -32,11 +32,11 @@ and open the template in the editor.
                 data.mouseX.push(e.clientX);
                 console.log(e.clientX);
                 
-               if ( data.mouseX.length > 100 ) {
+                if ( data.mouseX.length > 100 ) {
                     document.removeEventListener('mousemove', trackMouse);
                 }
                 
-           }
+            }
             
             
             document.addEventListener('mousemove', trackMouse);

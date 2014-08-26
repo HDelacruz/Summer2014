@@ -38,7 +38,7 @@
 			var response = xhr.responseText;  //responce is ready
 						
 			content.innerHTML += response;
-                        step++;
+                        step++;//step it up by one
                         
 
 		}
@@ -65,12 +65,13 @@
 
 
                 function scrollCheck() {
-			if ( (window.innerHeight + window.scrollY) >= document.body.offsetHeight) {//this is th inner height of the window plus it add the possition of the scrool bar to where it is a you scroll down				
+                    //this is the inner height of the window plus it add the possition of the scrool bar to where it is as you scroll down	
+			if ( (window.innerHeight + window.scrollY) >= document.body.offsetHeight) {			
 				makeAJAXCall();
 			}
 		}
 		
-		window.addEventListener("scroll", scrollCheck);
+		window.addEventListener("scroll", scrollCheck);//it adds an eventlistener to call the function scrollCheck
 		
 		
 		

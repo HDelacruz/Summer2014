@@ -7,6 +7,11 @@
     </head>
     <body>
         <div id="test">TODO write content</div>
+        <div id = "showResults"></div>
+        
+        
+     
+        <input type="button" id="showResults" value="Show Results" />  
         
         <script type="text/javascript">
             /*
@@ -16,6 +21,28 @@
                 clicked on will update the inner HTML with the new date and time.
                 use new Date() in JavaScript.
              */
+            
+            var divStyles = {
+                "border" : "1px solid black",
+                "cursor" : "pointer"
+            };
+            
+            var div = document.getElementById('test');  
+            
+            for ( var key in divStyles ) {
+                 div.style[key] = divStyles[key];
+            }
+            
+           // div.style.border = "1px solid black";
+           // div.style.cursor = 'pointer';
+            
+            
+            
+            div.addEventListener('click', updateTime );
+            function updateTime() {
+                div.innerHTML = new Date();
+            }
+            
         </script>
     </body>
 </html>

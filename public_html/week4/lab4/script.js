@@ -31,10 +31,10 @@ var userdata = {
     "email": '',
     "mouseX": [],
     "mouseY": [],
-    "height": "",
-    "width": "",
-    "agent": "",
-    "tittle":""
+    "height": '',
+    "width": '',
+    "agent": '',
+    "tittle":''
  
 };
 
@@ -53,20 +53,21 @@ var mail = document.getElementById('email');
 var fullname = document.getElementById('fullname');
 
 
-mail.addEventListener ('blur',saveEmail);
-fullname.addEventListener ('blur',saveFullName);
+mail.addEventListener ('blur',saveData);
+fullname.addEventListener ('blur',saveData);
 
 
-function saveFullName(){
+function saveData(){
     
-    userdata.name = fullname.value;   
-}
-
-function saveEmail() {
-    
+    userdata.name = fullname.value;
     userdata.email = mail.value;
-    
 }
+
+//function saveEmail() {
+    
+    //serdata.email = mail.value;
+    
+//}
 
 
 function screensize (){
