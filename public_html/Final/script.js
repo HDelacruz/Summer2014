@@ -3,43 +3,46 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
- // this is used to check the email field 
+ 
+ 
+ // this is used to check the phone field 
  
  function checkPhone ( str ) {
       var myreg = /^\(?(\d{3})\)?[- ]?(\d{3})[- ]?(\d{4})$/;  
       return myreg.test(str);
 }
- 
+  
+ // this is used to check the email field 
 function checkEmail ( str ) {
-      var myreg = /^(\()?\d{3}(\))?(-|\s)?\d{3}(-|\s)\d{4}$/;
-      return myreg.test(str);
+      var myreg2 = /^(\()?\d{3}(\))?(-|\s)?\d{3}(-|\s)\d{4}$/;
+      return myreg2.test(str);
 }
 
-
+ 
+ // this is used to check the fullname field 
 function noSpaceAlphaValidate( str ) {
-        var alphaRegex = /^[a-zA-Z ]$/;
+        var alphaRegex = /[a-zA-Z ]/;
         return alphaRegex.test(str);			
 }
 
-
+ 
+ // this is used to check the description field 
 function strip_HTML(str) {
         var findHtml = /<(.|\n)*?>/gi;
         return str.replace(findHtml,"");
 }
 
 
-
+//created a cvariable for my button save data
 var submitBtn = document.getElementById('saveData');
+
 
 function submitForm() {
 
-// this are my new variables using get element by id
-                   
-
+       // this are my new variables using get element by id  
         var fullname = document.getElementById('fullname');
 		var email = document.getElementById('email');
-        var phone = document.getElementById('phone');
-        
+        var phone = document.getElementById('phone');       
         var description = document.getElementById('description');
 
 //checking for first name
@@ -52,7 +55,7 @@ function submitForm() {
     }
     else
     {
-       if ( noSpaceAlphaValidate( name.value ) === true ) {
+       if ( noSpaceAlphaValidate( fullname.value ) === true ) {
                 console.log("full name is good");
         } else {
                 console.log("full name only alpha characters");
@@ -72,7 +75,7 @@ function submitForm() {
     }
     else
     {
-       if ( checkEmail( email.value ) === false ) {
+       if ( checkEmail( email.value ) === true) {
                 console.log("Email not valid");
         } else {
                 console.log("Email is good");
@@ -80,10 +83,7 @@ function submitForm() {
          document.getElementById("email_err").innerHTML=""; 
 		 
     }
-	
-
-	
-	
+		
    
    //Checking if phone is good 
     
@@ -103,8 +103,7 @@ function submitForm() {
          document.getElementById("phone_err").innerHTML=""; 
 		 
     }
-    
-         
+            
     
   //remove html elements
     
@@ -125,18 +124,42 @@ function submitForm() {
  
         document.getElementById("description_err").innerHTML="";
         
-    }
-    
-    
-      
+    }   	
+	
+	
+//variables for saving on local storage
+var name = document.getElementById('fullname').value;
+localStorage.setItem('fullname', name);
 
-}
+var description = document.getElementById('description').value;
+localStorage.setItem('description', description);
 
+var phone = document.getElementById('phone').value;
+localStorage.setItem('phone', phone);
 
+var email = document.getElementById('email').value;
+localStorage.setItem('email', email);
+
+ document.getElementById('fullname').value = '';
+ document.getElementById('email').value = '';
+ document.getElementById('phone').value = '';
+ document.getElementById('description').value = '';
+ }  
+   //Event listener that will activate the save data button once it is clicked 
 submitBtn.addEventListener('click', submitForm);
 
- //Event listener that will activate the Submit button once it is clicked 
+
+
+//this makes the Clear all data button clear all data on local storage
+var clearBtn = document.getElementById('clearData');
  
+ 
+ function clear () {
+ localStorage.clear();
+ }
+clearBtn.addEventListener('click', clear);
 
+	
 
-
+	
+	
