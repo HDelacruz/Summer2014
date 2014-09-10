@@ -27,12 +27,30 @@ and open the template in the editor.
              * start the function
              * 
              * */
-            var border = document.getElementById("test");
-            border.style.
             
-           
+            var div = document.getElementById('test');
+            var btn = document.getElementById('borderBtn');        
+            btn.addEventListener
+            var borderSize = 1;
+            //var borderTimer = setInterval(updateBorder, 200);
             
+            var borderTimer;
             
+            borderTimer.addEventListener('click', borderBtn);
+            
+            function updateBorder() {
+                borderSize++;
+                div.style.borderRadius = borderSize + 'px';
+                if ( borderSize > 20 ) {
+                    clearInterval(borderTimer);
+                }
+            }
+            
+            function startUpdate () {
+                borderBtn = setInterval('click', updateBorder);
+            }
+            
+       
             
         </script>
         

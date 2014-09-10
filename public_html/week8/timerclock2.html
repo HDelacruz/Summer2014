@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <!--
 To change this license header, choose License Headers in Project Properties.
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
@@ -12,39 +15,36 @@ and open the template in the editor.
     </head>
     <body>
         <div id="clock">TODO write content</div>
-        
-        <script Type="text/javascript">
+        <button id="stopclock">Stop Clock </button>
+        <button id="startclock">Start Clock </button>
+        <script type="text/javascript">
             
+            var clock = document.getElementById('clock');
+            var clockTimer = setInterval(updateClock, 1000);
             
-    var clock = document.getElementById("clock");
-    
-    //this setes the interval of by 1 seconds 
-    var clockTimer = setInterval(updateClock, 1000);
-    
-    function updateClock() {
-       
-     var newDate = new Date();
-     
-     
-     clock.innerHTML = newDate;
-     
-          
-        
-    }
-      
-    
-    
-    
+            var stopclock = document.getElementById('stopclock');            
+            stopclock.addEventListener('click', stopClock);
+            
+            var startclock = document.getElementById('startclock');            
+            startclock.addEventListener('click', startClock);
+            
+            function updateClock() {
+                var newdate = new Date();
+                clock.innerHTML = newdate;                
+            }
+            
+            function stopClock() {
+                clearInterval(clockTimer);
+            }
+            
+            function startClock() {
+                clockTimer = setInterval(updateClock, 1000);
+            }
+            
             
             
             
         </script>
         
-        
-      
-        
-        
     </body>
 </html>
-</html>
-
