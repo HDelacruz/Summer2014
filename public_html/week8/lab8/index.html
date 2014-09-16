@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <!--
 1. Create a new Lab8.html file under your week 8 folder.  
     Create a Div and 3 buttons on the page.
@@ -32,59 +31,47 @@ hint:  Set the div to be "position: absolute;" in CSS.
     elem.style.left = divPosLeft+"px";
 -->
 
-
-
-
-
-
-
 <html>
     <head>
         <title>TODO supply a title</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-       <!-- <style type="text/css">#test{position: absolute;} </style> -->
+        <style type="text/css">#test{position: absolute;} </style>  
         
     </head>
     <body>
         
         <div id="test">TODO write content</div>
+		<br> 
         <button id="fadein"> Fade In </button>
         <button id="fadeout"> Fade Out </button>
         <button id="movediv"> Move Div </button>
-        
-        
-        
-        
+               
         <script type="text/javascript">
-            
-            
-           
-          
+                     
             var clockTimer =  setTimeout(timer, 5000);
-         
-            
+                   
             function timer () {
-                          
-                                                                                                                                  
-               alert('Hi' + '\n' + 'five seconds have passed');                
+                                                                                                                                                         
+              //alert('Hi' + '\n' + 'five seconds have passed');                
         }
                
             var test = document.getElementById('test');        
             var fade = 0;
+			var fade1 = 0;
             var btn = document.getElementById('fadeout');  
             btn.addEventListener('click', startFadeOut);
             var btn2 = document.getElementById('fadein'); 
             btn2.addEventListener('click', startFadeIn);
-            
-            
+			
+			
+              //this makes two functions makes my div fade out      
             function startFadeOut(){
                 fade = 100;  
                 
               setTimeout(fadeOut, 100);
             
              }
-            
             
     
             function fadeOut() {
@@ -99,55 +86,48 @@ hint:  Set the div to be "position: absolute;" in CSS.
             
             
             
-            ////////
+            //this two functions makes my div fade bak in
                 function startFadeIn(){
-                fade = 0;  
+                fade1 = 100;  
                 
-              setTimeout(fadeIn, 0);
+              setTimeout(fadeIn, 100);
             
-             }
-            
-            
+             }            
     
             function fadeIn() {
-             fade = fade + 10;
-             test.style.opacity = fade/100;
+             fade1 = fade1 + 10;
+             test.style.opacity = fade1/100;
              
-             if (fade < 1)
+             if (fade1 < 1)
              {
                setTimeout(fadeIn, 100);  
              }
-            }
-            
-            
-            
-            
-            
-            
-            
-            
-          
-        
-
-
-            
-            
-            
-                     
-            
+            }		
+			
+		// this makes my div move to the other side of the screen	
+	var btn3 = document.getElementById('movediv');	
+	function move() {
+			 var divPosLeft = 0;  
+             //var Timer = setTimeout(move, 1000);		 		 
+              if  (divPosLeft == 0)
+			 {
+			 
+			divPosLeft = divPosLeft + 500;
+            test.style.left = divPosLeft+"px"; 
+					
+             }		 
+				
+		}
+		//add event to click the move div button
+		btn3.addEventListener('click', move);	
+              		
+         
+                      
             
             
         </script>
         
-        
-        
-        
-        
-        
-        
-        
-        
-        
+             
         
         
         
