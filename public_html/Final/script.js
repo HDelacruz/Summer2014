@@ -1,10 +1,3 @@
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
- 
- 
  // this is used to check the phone field 
  
  function checkPhone ( str ) {
@@ -126,31 +119,61 @@ function submitForm() {
         
     }   	
 	
-	
-//variables for saving on local storage
+
+	//this is saving to local storage		
 var name = document.getElementById('fullname').value;
-localStorage.setItem('fullname', name);
-
-var description = document.getElementById('description').value;
-localStorage.setItem('description', description);
-
-var phone = document.getElementById('phone').value;
-localStorage.setItem('phone', phone);
-
 var email = document.getElementById('email').value;
-localStorage.setItem('email', email);
+var phone = document.getElementById('phone').value;
+var description = document.getElementById('description').value;
 
- document.getElementById('fullname').value = '';
- document.getElementById('email').value = '';
- document.getElementById('phone').value = '';
- document.getElementById('description').value = '';
+var data = [];
+             
+                         
+data.push({ 
+ "fullname": [name]
+});
+ data.push({ 
+ "Email": [email]  
+});
+ data.push({ 
+ "Phone": [phone]  
+});
+data.push({ 
+"description": [description]   
+});
+localStorage.setItem('data', JSON.stringify(data) );
+            
+            var savedData = localStorage.getItem('data');
+            
+            console.log(savedData);
+			
+			
+		
+			
+			
+			
+			/////
+			//document.getElementById("tableData").innerHTML = localStorage.inputs[0].value;
+			//document.getElementById("tableData").innerHTML = localStorage.email;
+			//var inputs = document.getElementsByClassName("CSSTableGenerator"); 
+           // Name = inputs[0].value; 
+           // E-mail = inputs[1].value; 
+           // Phone = inputs[2].value; 
+           // Description = inputs[3].value; 
+
+		   
+		   
+		   
+		   
+
+
+ 
  }  
    //Event listener that will activate the save data button once it is clicked 
 submitBtn.addEventListener('click', submitForm);
 
-
-
-//this makes the Clear all data button clear all data on local storage
+	
+	//this makes the Clear all data button clear all data on local storage
 var clearBtn = document.getElementById('clearData');
  
  
@@ -158,8 +181,3 @@ var clearBtn = document.getElementById('clearData');
  localStorage.clear();
  }
 clearBtn.addEventListener('click', clear);
-
-	
-
-	
-	
