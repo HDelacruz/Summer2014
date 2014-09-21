@@ -17,16 +17,19 @@
          <button id="play">play</button>
         <script>
             
+			//created my variables and go my elements
             var can = document.getElementById('race');
             var playBtn = document.getElementById('play');
             var ctx = can.getContext('2d');
             
+			// initilise both of them at zero
             var x1 = 0;
             var x2 = 0;
             
-            
+            //added an event clicl listener on my button
            playBtn.addEventListener('click',play,false);
             
+			//this is my function for the race
             function play() {
                 x1 = 0;
                 x2 = 0;
@@ -34,10 +37,12 @@
                 playBtn.style.display = 'none';
             }
             
+			// funtion to tell it where to begin and here to move randomely
              function movecanvas(){
                
                ctx.clearRect(0,0,can.width,can.height);
                
+			  
                 ctx.beginPath();
                 ctx.moveTo(can.width-100, 0);
                 ctx.lineTo(can.width-100, 150);
@@ -49,6 +54,9 @@
                
                ctx.fillStyle="blue";
                ctx.fillRect(x2,75,50,25);
+			   
+			   
+			   
                  var w = parseInt(can.width-150,10);
                  var max = 20;
                  if ( x1 < w && x2 < w) {
@@ -71,7 +79,7 @@
                  }
                 
             }
-            
+            //calling my function
             play();
             
              function randNum(max) {
