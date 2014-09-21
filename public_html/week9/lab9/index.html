@@ -1,37 +1,82 @@
 <!DOCTYPE html>
+
 <html>
     <head>
-        <title>Lab 9</title>
+        <title>TODO supply a title</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width">
-        <style type="text/css">
+        
+         <style type="text/css">
             canvas {
                 border: 1px solid black;
             }
-        </style>
+            </style>
     </head>
     <body>
-        
-        <canvas id="race" width="750" height="150"></canvas>
-        <br />
-        <button id="play">Play</button>
-        
-        <script type="text/javascript">
-            /*
-                We will be creating a canvas race game. We will have two teams, one red and the other blue, that will race to the finish line.
-
-                Using Canvas create two rectangles, one red and the other blue. They should be the same width and height. 
-                When moving the rectangles make sure to generate a random number to move the x position of each rectangle. 
-                The minimum should always be greater than zero. It should be called twice to get a unique number for each rectangle. 
-                Once the rectangle reaches the finish line, display the winner. A play button should appear to reset the race. 
-                Once the race is started the play button should be hidden again.
-             */
+         <canvas id="race" width="750" height="150"></canvas>		 		
+         <button id="play">play</button>
+        <script>
+            
+            var can = document.getElementById('race');
+            var playBtn = document.getElementById('play');
+            var ctx = can.getContext('2d');
+            
+            var x1 = 0;
+            var x2 = 0;
             
             
+           playBtn.addEventListener('click',play,false);
             
-           function randNum(max) {
+            function play() {
+                x1 = 0;
+                x2 = 0;
+                setTimeout(movecanvas, 100);
+                playBtn.style.display = 'none';
+            }
+            
+             function movecanvas(){
+               
+               ctx.clearRect(0,0,can.width,can.height);
+               
+                ctx.beginPath();
+                ctx.moveTo(can.width-100, 0);
+                ctx.lineTo(can.width-100, 150);
+                ctx.stroke();
+               
+               
+               ctx.fillStyle="red";
+               ctx.fillRect(x1,25,50,25);
+               
+               ctx.fillStyle="blue";
+               ctx.fillRect(x2,75,50,25);
+                 var w = parseInt(can.width-150,10);
+                 var max = 20;
+                 if ( x1 < w && x2 < w) {
+                     
+                     x1+=randNum(max);
+                     x2+=randNum(max);
+                     setTimeout(movecanvas, 100);
+                 } else {
+                      ctx.font="20px Georgia";
+                         ctx.fillStyle="black";
+                        ctx.fillText("Winner!",10,50);
+                     if ( x1 >= w) {                       
+                        ctx.fillStyle="red";
+                         ctx.fillText("Red",10,80);
+                     }else if ( x2 >= w) {                       
+                        ctx.fillStyle="blue";
+                         ctx.fillText("Blue",10,80);
+                     }
+                     playBtn.style.display = 'block';
+                 }
+                
+            }
+            
+            play();
+            
+             function randNum(max) {
                return Math.ceil(Math.random()*max) + 1;
            }
-        </script>
+            </script>
     </body>
 </html>
