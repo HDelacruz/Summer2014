@@ -1,4 +1,4 @@
- // this is used to check the phone field 
+// this is used to check the phone field 
  
  function checkPhone ( str ) {
       var myreg = /^\(?(\d{3})\)?[- ]?(\d{3})[- ]?(\d{4})$/;  
@@ -56,14 +56,10 @@ function submitForm() {
            fullname.classList.remove('good');
         }
           
-           //email.classList.add('bad');
-          // email.classList.remove('good');
-       
-         
-	
+           
+       	
 	//Checking email 
-    
-    
+     
    if(email.value === "")
     {
         var msg="please enter email";
@@ -81,8 +77,7 @@ function submitForm() {
            email.classList.remove('good');
         }
    
-   //Checking if phone is good 
-    
+   //Checking if phone is good    
     if(phone.value === "")
     {
         var msg="please enter Phone Number";
@@ -99,10 +94,10 @@ function submitForm() {
            hasErrors = false;
            phone.classList.remove('good');
         }
+        
     
   //remove html elements
-    
-    
+        
     if (description.value === "" || description.value.length > 150)
     {
         var msg="please enter a valid description less then 150 characters";
@@ -119,27 +114,31 @@ function submitForm() {
            hasErrors = false;
            description.classList.remove('good');
         }
-
+       
         
-        
-	//this is saving to local storage		
-
-if ( true   )
+//this is calling my function to save to local storage		
+if (true) 
 { 
-    saveData();
+    saveData(); 
+    
+    fullname.value ="";
+   email.value ="";
+   phone.value ="";
+  description.value ="";   
+    
 }
- 
- 
- 
- 
+
+
+
  
  }
-   //Event listener that will activate the save data button once it is clicked 
+  //Event listener that will activate the save data button once it is clicked 
 submitBtn.addEventListener('click', submitForm);
 
-
+//creating a variable to my data in
 var data = [];
-             
+
+   //this is creating a function to to save my data to local storage          
     function saveData(){
         
         var currentData = {
@@ -162,21 +161,60 @@ data.push(currentData);
             
 localStorage.setItem('data', JSON.stringify(data) );
             
-            var savedData = localStorage.getItem('data');
+          var savedData = localStorage.getItem('data');
             
             console.log(savedData);
             console.log(JSON.parse(savedData));
+            data = JSON.parse(savedData);  
+            
 		
  } 
+ 
 
-	
-	//this makes the Clear all data button clear all data on local storage
-//var clearBtn = document.getElementById('clearData');
+
+
+//this displays my table
+   function displayTable(){
+      var stringData = "";
+      for (var i=0; i<data.length; i++  ){
+        
+        
+       stringData = stringData + "<tr><td>"+(i+1)+"</td><td>" + data[i].FullName + "</td><td>" + data[i].Email + "</td><td>" + data[i].Phone + "</td><td>" + data[i].Description + "</td></tr>";
+        
+     }
+    
+    var tableData = document.getElementById('tableData');
+    tableData.innerHTML = stingData;
+    
+}
+
+
+
+
+ 
+ //this function clears the last row
+ //
+ //function deleteLast() 
+//{
+    
+//}
+//var deletebtn = document.getElementById(deleteLastRowData);
+//deletebtn.addEventListener('click', deleteLast);
  
  
+
+//this makes the Clear all data button clear all data on local storage
  function clear () 
  {
+    
+ data.length = 0; 
  localStorage.clear();
  }
  var clearBtn = document.getElementById('clearData');
-clearBtn.addEventListener('click', clear);
+ clearBtn.addEventListener('click', clear);
+
+
+
+        
+
+
