@@ -15,6 +15,15 @@ function addTen( amt ) {
 }
 
 function percent( amt ) {
-    return amt /100;
+    return amt /100 + '%';
+    
+}
+
+
+function dollar (amt) {
+    
+    amt = amt.replace("$", '');
+    return parseInt(amt, 10);
+    
     
 }

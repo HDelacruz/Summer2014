@@ -33,32 +33,55 @@
  });
 
 
-
-
-
 describe("Percent", function() {
      
     var val;
-    
-    beforeEach(function() {
-      val = percent(20);
-    });
-    
-     it("should be a equal to 0.20", function(){
+  
+  
+     
+     it("20 should be a equal to 0.2%", function(){
         val = percent(20);
-        expect(val).toEqual('0.2');
+        expect(val).toEqual('0.2' + "%");
      });
      
      
-     it("should be a equal to 0.20", function(){
+     it("200 should be a equal to 2%", function(){
         val = percent(200);
-        expect(val).toEqual('2');
+        expect(val).toEqual('2' + "%");
      });
+      
      
-     /* it("should be greater than 0", function(){
+     
+      it("should be greater than 0", function(){
         val = percent(20000);
         expect(val).toBeGreaterThan(0);
      });
-     */
+     
+     
+     
+         
      
  });
+ 
+ describe("Dollar", function() {
+     
+    var val;
+  
+     it("$10.03 should be a equal to 10", function(){
+        val = dollar('$10.03');
+        expect(val).toEqual(10);
+     });
+     
+     
+     it("$0.03 should be a equal to 0", function(){
+        val = dollar('$0.03');
+        expect(val).toEqual(0);
+     });
+     
+      it("$01.3 should be a equal to 1", function(){
+        val = dollar('$01.3');
+        expect(val).toEqual(1);
+     });
+     
+ });
+ 
